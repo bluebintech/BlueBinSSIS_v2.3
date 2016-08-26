@@ -1,0 +1,14 @@
+﻿<?xml version="1.0"?>
+<DTS:ConnectionManager xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:ObjectName="BBConnection"
+  DTS:DTSID="{E87A1F8E-D767-443F-9AE0-2D4BD4F57E34}"
+  DTS:CreationName="OLEDB">
+  <DTS:ObjectData>
+    <DTS:ConnectionManager
+      DTS:ConnectionString="Data Source=WIN-VHH9TU64I04;User ID=BlueBin_RQ500User;Initial Catalog=DemoV23;Provider=SQLOLEDB.1;Application Name=SSIS-RQ500OutboundFile-{E87A1F8E-D767-443F-9AE0-2D4BD4F57E34}BBConnection;">
+      <DTS:Password
+        DTS:Name="Password"
+        Sensitive="1"></DTS:Password>
+    </DTS:ConnectionManager>
+  </DTS:ObjectData>
+</DTS:ConnectionManager>

@@ -1,0 +1,146 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="1/7/2016 1:57:03 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="WIN-VHH9TU64I04"
+  DTS:CreatorName="WIN-VHH9TU64I04\gbutler"
+  DTS:DTSID="{DD7673AE-C187-496D-90D2-A1980DBBDDEC}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="12.0.2430.0"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="Package"
+  DTS:PackageType="5"
+  DTS:VersionBuild="5"
+  DTS:VersionGUID="{BCF73E97-B809-48EA-9A63-CBF7D8262FC6}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[FTP Connection Manager]"
+      DTS:CreationName="FTP"
+      DTS:DTSID="{E242ADF2-5165-47BA-9107-0C0F4A03A84A}"
+      DTS:ObjectName="FTP Connection Manager">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="ftp.bluebin.com:21">
+          <DTS:FtpConnection
+            DTS:ServerName="ftp.bluebin.com"
+            DTS:ServerUserName="BlueBinFTP">
+            <DTS:Property
+              DTS:Name="ServerPassword"
+              Sensitive="1"
+              Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAATRlvNeRD70am5hCVSKfr9QAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAADTPqxDS6fkDSiQv5r+mQ77j6njIMOmLLLy1yTEiRoudQAAAAAOgAAAAAIAACAAAAAF5QMnz5qxRFjSscFVW9hJ+oqokF/E0PyY/4wGGFIvsSAAAAAzjGAuuGDnRLflgv/ian+Hn57LSBgMPbBuge2uuC/oe0AAAAA48j4LJ0emmSDd9kpgJ7fNfKsR8nwwKKTM/ZsMBINOcXNqhoTFF4P9oaxT0G5LaiNxeC86UqaB0RggKRTvEr8B</DTS:Property>
+          </DTS:FtpConnection>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Inbound]"
+      DTS:CreationName="FILE"
+      DTS:DTSID="{9E12392F-6EE0-4E5E-87B6-81C5B5210A7D}"
+      DTS:ObjectName="Inbound">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="\\dashboard.bluebin.com\c$\ftp.bluebin.com\CaldwellFTP\Inbound\Par_Location_File201601070400.CSV" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{06FA7881-4ACA-43B0-8D9B-48ED52A41421}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="FTPDestination">
+      <DTS:VariableValue
+        DTS:DataType="8">D:\DataExchange\Caldwell\Inbound</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{CAA81AFB-C428-4420-A927-943BA936F4B5}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="FTPSource">
+      <DTS:VariableValue
+        DTS:DataType="8">/CaldwellFTP/Inbound/Par_Location*.CSV</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{B9645846-82CD-45BC-94C4-915994AA8D9E}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="Source2">
+      <DTS:VariableValue
+        DTS:DataType="8">\\dashboard.bluebin.com\c$\ftp.bluebin.com\CaldwellFTP\Inbound\Par_Location_File201601070400.CSV</DTS:VariableValue>
+    </DTS:Variable>
+  </DTS:Variables>
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\File System Task"
+      DTS:CreationName="Microsoft.FileSystemTask"
+      DTS:Description="File System Task"
+      DTS:DTSID="{BC9E8414-2692-4BCE-A781-A202A557F5FD}"
+      DTS:ExecutableType="Microsoft.FileSystemTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="File System Task"
+      DTS:TaskContact="File System Task;Microsoft Corporation; SQL Server 2014; © 2014 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <FileSystemData
+          TaskOverwriteDestFile="True"
+          TaskSourcePath="User::Source2"
+          TaskIsSourceVariable="True"
+          TaskDestinationPath="User::FTPDestination"
+          TaskIsDestinationVariable="True" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\FTP Task"
+      DTS:CreationName="Microsoft.FtpTask"
+      DTS:Description="FTP Task"
+      DTS:Disabled="True"
+      DTS:DTSID="{D5E5056D-3E52-4EC2-B3D5-A8FEAAC98095}"
+      DTS:ExecutableType="Microsoft.FtpTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="FTP Task"
+      DTS:TaskContact="FTP Task; Microsoft Corporation; SQL Server 2014; (c) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <FtpData
+          ConnectionName="{E242ADF2-5165-47BA-9107-0C0F4A03A84A}"
+          TaskOperationType="Receive"
+          TaskIsLocalPathVar="True"
+          TaskLocalPath="User::FTPDestination"
+          TaskIsRemotePathVar="True"
+          TaskRemotePath="User::FTPSource" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="sql12">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="122,42"
+          Id="Package\FTP Task"
+          TopLeft="79,159" />
+        <NodeLayout
+          Size="158,42"
+          Id="Package\File System Task"
+          TopLeft="260,202" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

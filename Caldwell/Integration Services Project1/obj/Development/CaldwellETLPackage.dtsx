@@ -1,0 +1,1725 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="1/7/2016 1:57:03 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="WIN-VHH9TU64I04"
+  DTS:CreatorName="WIN-VHH9TU64I04\gbutler"
+  DTS:DTSID="{9A462DD0-832F-4074-9A64-832E4E0DEB8F}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="12.0.2430.0"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="CaldwellETLPackage"
+  DTS:PackageType="5"
+  DTS:VersionBuild="27"
+  DTS:VersionGUID="{229F26E4-6F97-4E06-BE93-86835BEF2C67}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[etl.bluebin.com]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{41D42549-910E-4E30-BD27-AD508B87746F}"
+      DTS:ObjectName="etl.bluebin.com">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=.;User ID=bluebindba;Initial Catalog=Caldwell;Provider=SQLNCLI11.1;Auto Translate=False;">
+          <DTS:Password
+            DTS:Name="Password"
+            Sensitive="1"
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAATRlvNeRD70am5hCVSKfr9QAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAABXCFeUQOmspmJm3YsS0PpVJQfFjpTfHc4CTXj3SfssTgAAAAAOgAAAAAIAACAAAAB6YRuBYh7bhlL1IrgXZwhVE8eaeP2BCc7IGAx3zO4BnCAAAABnsSHkW2Yf8aT0S/x3TdvH5D+LremlPTc573yiF4wGt0AAAAANj8CPsiDXlOzkpi17m3p0cSo9k8ZPQ2VLMn2qo9/O3z0N4AqTMCPhV1oZPL9zIlny+IGwW2YUGeF5OcGc6CSY</DTS:Password>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Flat File Connection Manager]"
+      DTS:CreationName="FLATFILE"
+      DTS:DTSID="{5FDF46A8-7519-46E0-BDE8-3B287499AFD4}"
+      DTS:ObjectName="Flat File Connection Manager">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:Format="Delimited"
+          DTS:LocaleID="1033"
+          DTS:HeaderRowDelimiter="_x000D__x000A_"
+          DTS:ColumnNamesInFirstDataRow="True"
+          DTS:RowDelimiter=""
+          DTS:TextQualifier="_x003C_none_x003E_"
+          DTS:CodePage="1252"
+          DTS:ConnectionString="F:\DataExchange\Caldwell\Inbound\Par_Location_File.CSV">
+          <DTS:FlatFileColumns>
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="7"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Location"
+              DTS:DTSID="{F8A7AC4E-C1ED-4A16-9DA4-761EDB5E42F4}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="255"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="LocationName"
+              DTS:DTSID="{77B78C06-078E-499F-870C-2874CDCCE2EA}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:DataType="3"
+              DTS:TextQualified="True"
+              DTS:ObjectName="ItemNumber"
+              DTS:DTSID="{E3E11258-00B4-4CB8-BA5F-939F6F3074F3}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="BinSequence"
+              DTS:DTSID="{456F0556-C281-47A9-BA37-DFEFFD0551AC}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="10"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="StockUOM"
+              DTS:DTSID="{2C13BF63-4DB2-486D-BC02-B61389C79192}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="25"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="BinQuantity(Max Min)"
+              DTS:DTSID="{A581E675-726A-4E44-9242-86BA1236E9C3}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:DataType="3"
+              DTS:TextQualified="True"
+              DTS:ObjectName="LeadTime"
+              DTS:DTSID="{6F0E6CBA-8D60-42DE-9628-B24DFC400052}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x000D__x000A_"
+              DTS:MaximumWidth="10"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="ItemTypeS StockN NonStock"
+              DTS:DTSID="{E1DBA9AA-C7C0-4AEB-86DB-0BEC1DBF612B}"
+              DTS:CreationName="" />
+          </DTS:FlatFileColumns>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Flat File Connection Manager 1]"
+      DTS:CreationName="FLATFILE"
+      DTS:DTSID="{B25AF96B-3C4E-42FE-82A8-CDA32EDD212D}"
+      DTS:ObjectName="Flat File Connection Manager 1">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:Format="Delimited"
+          DTS:LocaleID="1033"
+          DTS:HeaderRowDelimiter="_x000D__x000A_"
+          DTS:ColumnNamesInFirstDataRow="True"
+          DTS:RowDelimiter=""
+          DTS:TextQualifier="_x003C_none_x003E_"
+          DTS:CodePage="1252"
+          DTS:ConnectionString="F:\DataExchange\Caldwell\Inbound\Par_Item_Master.CSV">
+          <DTS:FlatFileColumns>
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:DataType="3"
+              DTS:TextQualified="True"
+              DTS:ObjectName="ItemNumber"
+              DTS:DTSID="{599A52BD-CD09-4CD5-B6AC-90885FEA1588}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x000D__x000A_"
+              DTS:MaximumWidth="255"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="ItemDescription"
+              DTS:DTSID="{EAF2D58A-CCFD-4B34-8D1D-2D4828DDB417}"
+              DTS:CreationName="" />
+          </DTS:FlatFileColumns>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Flat File Connection Manager 2]"
+      DTS:CreationName="FLATFILE"
+      DTS:DTSID="{3685BF33-EDF3-4D62-9C44-B151DF156C57}"
+      DTS:ObjectName="Flat File Connection Manager 2">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:Format="Delimited"
+          DTS:LocaleID="1033"
+          DTS:HeaderRowDelimiter="_x000D__x000A_"
+          DTS:ColumnNamesInFirstDataRow="True"
+          DTS:RowDelimiter=""
+          DTS:TextQualifier="_x003C_none_x003E_"
+          DTS:CodePage="1252"
+          DTS:ConnectionString="F:\DataExchange\Caldwell\Inbound\Par_Location_File.CSV">
+          <DTS:FlatFileColumns>
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="7"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Location"
+              DTS:DTSID="{BD4CC43E-6B70-498B-ADFE-78DBA4BE3826}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="255"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="LocationName"
+              DTS:DTSID="{7A5DDBD4-39D3-42C9-BB90-D28031B2B56C}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:DataType="21"
+              DTS:TextQualified="True"
+              DTS:ObjectName="ItemNumber"
+              DTS:DTSID="{B98273DD-34AB-412B-8C66-8023AB1B01CA}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="BinSequence"
+              DTS:DTSID="{FEE3760B-5A93-446C-AB03-9D3F4A7FC110}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="10"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="StockUOM"
+              DTS:DTSID="{F9C1C2D6-A687-46B8-9BF7-F86911FFA251}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="25"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="BinQuantity(Max Min)"
+              DTS:DTSID="{75BBD7B3-5475-4399-B154-10C9C47F25D4}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:DataType="3"
+              DTS:TextQualified="True"
+              DTS:ObjectName="LeadTime"
+              DTS:DTSID="{9BF623C7-6C6D-43BE-8D59-696D3BCBBC33}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x000D__x000A_"
+              DTS:MaximumWidth="10"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="ItemTypeS StockN NonStock"
+              DTS:DTSID="{45C5B2E5-CA2E-43D9-8E82-C367CCA68CC1}"
+              DTS:CreationName="" />
+          </DTS:FlatFileColumns>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[FTP Connection Manager]"
+      DTS:CreationName="FTP"
+      DTS:DTSID="{8718AB8F-8964-4D0B-8D9B-42C8CE423F40}"
+      DTS:ObjectName="FTP Connection Manager">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="ftp.bluebin.com:21">
+          <DTS:FtpConnection
+            DTS:ServerName="ftp.bluebin.com"
+            DTS:ServerUserName="BlueBinFTP"
+            DTS:UsePassiveMode="True">
+            <DTS:Property
+              DTS:Name="ServerPassword"
+              Sensitive="1"
+              Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAATRlvNeRD70am5hCVSKfr9QAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAAAIzbQBYuFdhPrsTk9sOXZ8n4wykwAYsr85/Q2wR0Vy5wAAAAAOgAAAAAIAACAAAAB70eapDLUaikip19GANOuu08hDpBf8oxOJ54VkANG/RyAAAADCpMGtHDEK9uxIfeusE2owxqZ+icAsc0J1NCVLvRMndEAAAACdNZvxhrfzFBqAse1o0Uxt41ktoXe1neBDGH925p4fSONVbibOuSrdhcPGjEGhoin8fPZEIwP4/4ciSft+zF3e</DTS:Property>
+          </DTS:FtpConnection>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Par_Item_Master.CSV]"
+      DTS:CreationName="FILE"
+      DTS:DTSID="{C1D37300-34E2-440E-A59F-9C5F20A28CB8}"
+      DTS:ObjectName="Par_Item_Master.CSV">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="F:\DataExchange\Caldwell\Inbound\Par_Item_Master.CSV" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Par_Location_File.CSV]"
+      DTS:CreationName="FILE"
+      DTS:DTSID="{473B9B17-71BA-4F74-A24D-E98B7EAB4970}"
+      DTS:ObjectName="Par_Location_File.CSV">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="F:\DataExchange\Caldwell\Inbound\Par_Location_File.CSV" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Par_Location_File.CSV 1]"
+      DTS:CreationName="FILE"
+      DTS:DTSID="{D30C2688-87B2-4BFB-AC86-C09B4F387655}"
+      DTS:ObjectName="Par_Location_File.CSV 1">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="F:\DataExchange\Caldwell\Inbound\Par_Location_File.CSV" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[zArchive]"
+      DTS:CreationName="FILE"
+      DTS:DTSID="{AA4F7A63-3C78-4E20-89A7-FBA37C2490A1}"
+      DTS:ObjectName="zArchive">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:FileUsageType="2"
+          DTS:ConnectionString="F:\DataExchange\Caldwell\Inbound\zArchive" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{A20F9897-D8F4-49BC-9794-7248FB99F63F}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="DestinationCaldwell">
+      <DTS:VariableValue
+        DTS:DataType="8">F:\DataExchange\Caldwell\Inbound</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{F8F4840D-1A34-4011-B954-DBB5BD4A6669}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="DestinationItemMasterArchive">
+      <DTS:VariableValue
+        DTS:DataType="8">F:\DataExchange\Caldwell\Inbound\zArchive</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{F684E7C9-5B66-4AAB-AD80-57C1BD47BE13}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="SourceItemMaster">
+      <DTS:VariableValue
+        DTS:DataType="8">\\dashboard.bluebin.com\Inbound\Item_Master.CSV</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{4B172D96-8D85-4379-860E-C7354F5FD3F1}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="SourceParItemMaster">
+      <DTS:VariableValue
+        DTS:DataType="8">\\dashboard.bluebin.com\Inbound\Par_Item_Master.CSV</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{B9645846-82CD-45BC-94C4-915994AA8D9E}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="SourceParLocationFile">
+      <DTS:VariableValue
+        DTS:DataType="8">\\dashboard.bluebin.com\Inbound\Par_Location_File.CSV</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{018AB4CA-3A66-4D3F-A4AB-35EB4A9BD190}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="SourceRequisition">
+      <DTS:VariableValue
+        DTS:DataType="8">\\dashboard.bluebin.com\Inbound\Requisition.CSV</DTS:VariableValue>
+    </DTS:Variable>
+  </DTS:Variables>
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Sequence ItemMaster"
+      DTS:CreationName="STOCK:SEQUENCE"
+      DTS:Description="Sequence Container"
+      DTS:DTSID="{45e7da0c-9e28-4a09-9ea2-23b18e40f268}"
+      DTS:ExecutableType="STOCK:SEQUENCE"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Sequence ItemMaster">
+      <DTS:Variables />
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\Sequence ItemMaster\ArchiveItemMaster"
+          DTS:CreationName="Microsoft.FileSystemTask"
+          DTS:Description="File System Task"
+          DTS:DTSID="{3A216B91-2A19-43FA-B03E-760220435641}"
+          DTS:ExecutableType="Microsoft.FileSystemTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="ArchiveItemMaster"
+          DTS:TaskContact="File System Task;Microsoft Corporation; SQL Server 2014; © 2014 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <FileSystemData
+              TaskOperationType="MoveFile"
+              TaskOverwriteDestFile="True"
+              TaskSourcePath="{C1D37300-34E2-440E-A59F-9C5F20A28CB8}"
+              TaskDestinationPath="{AA4F7A63-3C78-4E20-89A7-FBA37C2490A1}" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Sequence ItemMaster\Copy ItemMaster File"
+          DTS:CreationName="Microsoft.FileSystemTask"
+          DTS:Description="File System Task"
+          DTS:DTSID="{d9a60003-1c23-4aff-b08d-40282ec42cab}"
+          DTS:ExecutableType="Microsoft.FileSystemTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Copy ItemMaster File"
+          DTS:TaskContact="File System Task;Microsoft Corporation; SQL Server 2014; © 2014 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <FileSystemData
+              TaskOverwriteDestFile="True"
+              TaskSourcePath="User::SourceParItemMaster"
+              TaskIsSourceVariable="True"
+              TaskDestinationPath="User::DestinationCaldwell"
+              TaskIsDestinationVariable="True" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Sequence ItemMaster\Data Flow Task"
+          DTS:CreationName="Microsoft.Pipeline"
+          DTS:Description="Data Flow Task"
+          DTS:DTSID="{560421f6-7084-4b1d-b340-333f81a65acb}"
+          DTS:ExecutableType="Microsoft.Pipeline"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Data Flow Task"
+          DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <pipeline
+              version="1">
+              <components>
+                <component
+                  refId="Package\Sequence ItemMaster\Data Flow Task\Flat File Source"
+                  componentClassID="Microsoft.FlatFileSource"
+                  contactInfo="Flat File Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+                  description="Flat File Source"
+                  localeId="1033"
+                  name="Flat File Source"
+                  usesDispositions="true"
+                  version="1">
+                  <properties>
+                    <property
+                      dataType="System.Boolean"
+                      description="Specifies whether zero-length columns are treated as null."
+                      name="RetainNulls">false</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of an output column containing the file name. If no name is specified, no output column containing the file name will be generated."
+                      name="FileNameColumnName"></property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Sequence ItemMaster\Data Flow Task\Flat File Source.Connections[FlatFileConnection]"
+                      connectionManagerID="Package.ConnectionManagers[Flat File Connection Manager 1]"
+                      connectionManagerRefId="Package.ConnectionManagers[Flat File Connection Manager 1]"
+                      name="FlatFileConnection" />
+                  </connections>
+                  <outputs>
+                    <output
+                      refId="Package\Sequence ItemMaster\Data Flow Task\Flat File Source.Outputs[Flat File Source Output]"
+                      name="Flat File Source Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Sequence ItemMaster\Data Flow Task\Flat File Source.Outputs[Flat File Source Output].Columns[ItemNumber]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence ItemMaster\Data Flow Task\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[ItemNumber]"
+                          lineageId="Package\Sequence ItemMaster\Data Flow Task\Flat File Source.Outputs[Flat File Source Output].Columns[ItemNumber]"
+                          name="ItemNumber"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the data is in binary format."
+                              name="UseBinaryFormat">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Sequence ItemMaster\Data Flow Task\Flat File Source.Outputs[Flat File Source Output].Columns[ItemDescription]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence ItemMaster\Data Flow Task\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[ItemDescription]"
+                          length="255"
+                          lineageId="Package\Sequence ItemMaster\Data Flow Task\Flat File Source.Outputs[Flat File Source Output].Columns[ItemDescription]"
+                          name="ItemDescription"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the data is in binary format."
+                              name="UseBinaryFormat">false</property>
+                          </properties>
+                        </outputColumn>
+                      </outputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Sequence ItemMaster\Data Flow Task\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[ItemNumber]"
+                          dataType="i4"
+                          name="ItemNumber" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence ItemMaster\Data Flow Task\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[ItemDescription]"
+                          codePage="1252"
+                          dataType="str"
+                          length="255"
+                          name="ItemDescription" />
+                      </externalMetadataColumns>
+                    </output>
+                    <output
+                      refId="Package\Sequence ItemMaster\Data Flow Task\Flat File Source.Outputs[Flat File Source Error Output]"
+                      isErrorOut="true"
+                      name="Flat File Source Error Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Sequence ItemMaster\Data Flow Task\Flat File Source.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]"
+                          codePage="1252"
+                          dataType="text"
+                          description="Flat File Source Error Output Column"
+                          lineageId="Package\Sequence ItemMaster\Data Flow Task\Flat File Source.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]"
+                          name="Flat File Source Error Output Column" />
+                        <outputColumn
+                          refId="Package\Sequence ItemMaster\Data Flow Task\Flat File Source.Outputs[Flat File Source Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Sequence ItemMaster\Data Flow Task\Flat File Source.Outputs[Flat File Source Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Sequence ItemMaster\Data Flow Task\Flat File Source.Outputs[Flat File Source Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Sequence ItemMaster\Data Flow Task\Flat File Source.Outputs[Flat File Source Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\Sequence ItemMaster\Data Flow Task\OLE DB Destination"
+                  componentClassID="Microsoft.OLEDBDestination"
+                  contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+                  description="OLE DB Destination"
+                  name="OLE DB Destination"
+                  usesDispositions="true"
+                  version="4">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">[dbo].[ItemMaster]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">3</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepIdentity">false</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepNulls">false</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                      name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                      name="FastLoadMaxInsertCommitSize">2147483647</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Sequence ItemMaster\Data Flow Task\OLE DB Destination.Connections[OleDbConnection]"
+                      connectionManagerID="Package.ConnectionManagers[etl.bluebin.com]"
+                      connectionManagerRefId="Package.ConnectionManagers[etl.bluebin.com]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\Sequence ItemMaster\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input]"
+                      errorOrTruncationOperation="Insert"
+                      errorRowDisposition="FailComponent"
+                      hasSideEffects="true"
+                      name="OLE DB Destination Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\Sequence ItemMaster\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[ItemNumber]"
+                          cachedDataType="i4"
+                          cachedName="ItemNumber"
+                          externalMetadataColumnId="Package\Sequence ItemMaster\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ItemNumber]"
+                          lineageId="Package\Sequence ItemMaster\Data Flow Task\Flat File Source.Outputs[Flat File Source Output].Columns[ItemNumber]" />
+                        <inputColumn
+                          refId="Package\Sequence ItemMaster\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[ItemDescription]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="255"
+                          cachedName="ItemDescription"
+                          externalMetadataColumnId="Package\Sequence ItemMaster\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ItemDescription]"
+                          lineageId="Package\Sequence ItemMaster\Data Flow Task\Flat File Source.Outputs[Flat File Source Output].Columns[ItemDescription]" />
+                      </inputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Sequence ItemMaster\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ItemNumber]"
+                          dataType="i4"
+                          name="ItemNumber" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence ItemMaster\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ItemDescription]"
+                          codePage="1252"
+                          dataType="str"
+                          length="255"
+                          name="ItemDescription" />
+                      </externalMetadataColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\Sequence ItemMaster\Data Flow Task\OLE DB Destination.Outputs[OLE DB Destination Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="OLE DB Destination Error Output"
+                      synchronousInputId="Package\Sequence ItemMaster\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Sequence ItemMaster\Data Flow Task\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Sequence ItemMaster\Data Flow Task\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Sequence ItemMaster\Data Flow Task\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Sequence ItemMaster\Data Flow Task\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+              </components>
+              <paths>
+                <path
+                  refId="Package\Sequence ItemMaster\Data Flow Task.Paths[Flat File Source Output]"
+                  endId="Package\Sequence ItemMaster\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input]"
+                  name="Flat File Source Output"
+                  startId="Package\Sequence ItemMaster\Data Flow Task\Flat File Source.Outputs[Flat File Source Output]" />
+              </paths>
+            </pipeline>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Sequence ItemMaster\Truncate ItemMaster"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{a83d1878-7074-4ade-a1b8-3ccea26cbaf3}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Truncate ItemMaster"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2014; © 2014 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{41D42549-910E-4E30-BD27-AD508B87746F}"
+              SQLTask:SqlStatementSource="truncate table dbo.ItemMaster" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+      <DTS:PrecedenceConstraints>
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Sequence ItemMaster.PrecedenceConstraints[Constraint]"
+          DTS:CreationName=""
+          DTS:DTSID="{9e4629fa-a214-4483-a6c4-9f6b96c66a48}"
+          DTS:From="Package\Sequence ItemMaster\Copy ItemMaster File"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint"
+          DTS:To="Package\Sequence ItemMaster\Truncate ItemMaster" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Sequence ItemMaster.PrecedenceConstraints[Constraint 1]"
+          DTS:CreationName=""
+          DTS:DTSID="{083a8889-30a2-46f8-b40f-1d1b5224a9d9}"
+          DTS:From="Package\Sequence ItemMaster\Truncate ItemMaster"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 1"
+          DTS:To="Package\Sequence ItemMaster\Data Flow Task" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Sequence ItemMaster.PrecedenceConstraints[Constraint 2]"
+          DTS:CreationName=""
+          DTS:DTSID="{008CEB7A-040F-4331-AA3A-C83248B41E93}"
+          DTS:From="Package\Sequence ItemMaster\Data Flow Task"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 2"
+          DTS:To="Package\Sequence ItemMaster\ArchiveItemMaster" />
+      </DTS:PrecedenceConstraints>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Sequence ParMaster"
+      DTS:CreationName="STOCK:SEQUENCE"
+      DTS:Description="Sequence Container"
+      DTS:DTSID="{E657B8CC-7046-4845-AFB6-BCA94FE1925C}"
+      DTS:ExecutableType="STOCK:SEQUENCE"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Sequence ParMaster">
+      <DTS:Variables />
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\Sequence ParMaster\ArchiveParMaster"
+          DTS:CreationName="Microsoft.FileSystemTask"
+          DTS:Description="File System Task"
+          DTS:DTSID="{241E1EA3-5D32-4CD9-9D0C-8441D5F826CD}"
+          DTS:ExecutableType="Microsoft.FileSystemTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="ArchiveParMaster"
+          DTS:TaskContact="File System Task;Microsoft Corporation; SQL Server 2014; © 2014 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <FileSystemData
+              TaskOperationType="MoveFile"
+              TaskOverwriteDestFile="True"
+              TaskSourcePath="{473B9B17-71BA-4F74-A24D-E98B7EAB4970}"
+              TaskDestinationPath="{AA4F7A63-3C78-4E20-89A7-FBA37C2490A1}" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Sequence ParMaster\Copy ParMaster File"
+          DTS:CreationName="Microsoft.FileSystemTask"
+          DTS:Description="File System Task"
+          DTS:DTSID="{BC9E8414-2692-4BCE-A781-A202A557F5FD}"
+          DTS:ExecutableType="Microsoft.FileSystemTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Copy ParMaster File"
+          DTS:TaskContact="File System Task;Microsoft Corporation; SQL Server 2014; © 2014 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <FileSystemData
+              TaskOverwriteDestFile="True"
+              TaskSourcePath="User::SourceParLocationFile"
+              TaskIsSourceVariable="True"
+              TaskDestinationPath="User::DestinationCaldwell"
+              TaskIsDestinationVariable="True" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Sequence ParMaster\Data Flow Task"
+          DTS:CreationName="Microsoft.Pipeline"
+          DTS:Description="Data Flow Task"
+          DTS:DTSID="{E034FAF5-5304-4678-904E-AE6982C66B87}"
+          DTS:ExecutableType="Microsoft.Pipeline"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Data Flow Task"
+          DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <pipeline
+              version="1">
+              <components>
+                <component
+                  refId="Package\Sequence ParMaster\Data Flow Task\Flat File Source"
+                  componentClassID="Microsoft.FlatFileSource"
+                  contactInfo="Flat File Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+                  description="Flat File Source"
+                  localeId="1033"
+                  name="Flat File Source"
+                  usesDispositions="true"
+                  version="1">
+                  <properties>
+                    <property
+                      dataType="System.Boolean"
+                      description="Specifies whether zero-length columns are treated as null."
+                      name="RetainNulls">false</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of an output column containing the file name. If no name is specified, no output column containing the file name will be generated."
+                      name="FileNameColumnName"></property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Sequence ParMaster\Data Flow Task\Flat File Source.Connections[FlatFileConnection]"
+                      connectionManagerID="Package.ConnectionManagers[Flat File Connection Manager 2]"
+                      connectionManagerRefId="Package.ConnectionManagers[Flat File Connection Manager 2]"
+                      name="FlatFileConnection" />
+                  </connections>
+                  <outputs>
+                    <output
+                      refId="Package\Sequence ParMaster\Data Flow Task\Flat File Source.Outputs[Flat File Source Output]"
+                      name="Flat File Source Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Sequence ParMaster\Data Flow Task\Flat File Source.Outputs[Flat File Source Output].Columns[LocationId]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence ParMaster\Data Flow Task\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[Location]"
+                          length="7"
+                          lineageId="Package\Sequence ParMaster\Data Flow Task\Flat File Source.Outputs[Flat File Source Output].Columns[LocationId]"
+                          name="LocationId"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the data is in binary format."
+                              name="UseBinaryFormat">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Sequence ParMaster\Data Flow Task\Flat File Source.Outputs[Flat File Source Output].Columns[LocationName]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence ParMaster\Data Flow Task\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[LocationName]"
+                          length="255"
+                          lineageId="Package\Sequence ParMaster\Data Flow Task\Flat File Source.Outputs[Flat File Source Output].Columns[LocationName]"
+                          name="LocationName"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the data is in binary format."
+                              name="UseBinaryFormat">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Sequence ParMaster\Data Flow Task\Flat File Source.Outputs[Flat File Source Output].Columns[ItemNumber]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence ParMaster\Data Flow Task\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[ItemNumber]"
+                          lineageId="Package\Sequence ParMaster\Data Flow Task\Flat File Source.Outputs[Flat File Source Output].Columns[ItemNumber]"
+                          name="ItemNumber"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the data is in binary format."
+                              name="UseBinaryFormat">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Sequence ParMaster\Data Flow Task\Flat File Source.Outputs[Flat File Source Output].Columns[BinSequence]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence ParMaster\Data Flow Task\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[BinSequence]"
+                          length="50"
+                          lineageId="Package\Sequence ParMaster\Data Flow Task\Flat File Source.Outputs[Flat File Source Output].Columns[BinSequence]"
+                          name="BinSequence"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the data is in binary format."
+                              name="UseBinaryFormat">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Sequence ParMaster\Data Flow Task\Flat File Source.Outputs[Flat File Source Output].Columns[StockUOM]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence ParMaster\Data Flow Task\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[StockUOM]"
+                          length="10"
+                          lineageId="Package\Sequence ParMaster\Data Flow Task\Flat File Source.Outputs[Flat File Source Output].Columns[StockUOM]"
+                          name="StockUOM"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the data is in binary format."
+                              name="UseBinaryFormat">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Sequence ParMaster\Data Flow Task\Flat File Source.Outputs[Flat File Source Output].Columns[BinQuantity]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence ParMaster\Data Flow Task\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[BinQuantity(Max Min)]"
+                          length="25"
+                          lineageId="Package\Sequence ParMaster\Data Flow Task\Flat File Source.Outputs[Flat File Source Output].Columns[BinQuantity]"
+                          name="BinQuantity"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the data is in binary format."
+                              name="UseBinaryFormat">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Sequence ParMaster\Data Flow Task\Flat File Source.Outputs[Flat File Source Output].Columns[LeadTime]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence ParMaster\Data Flow Task\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[LeadTime]"
+                          lineageId="Package\Sequence ParMaster\Data Flow Task\Flat File Source.Outputs[Flat File Source Output].Columns[LeadTime]"
+                          name="LeadTime"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the data is in binary format."
+                              name="UseBinaryFormat">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Sequence ParMaster\Data Flow Task\Flat File Source.Outputs[Flat File Source Output].Columns[ItemType]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence ParMaster\Data Flow Task\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[ItemTypeS StockN NonStock]"
+                          length="10"
+                          lineageId="Package\Sequence ParMaster\Data Flow Task\Flat File Source.Outputs[Flat File Source Output].Columns[ItemType]"
+                          name="ItemType"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the data is in binary format."
+                              name="UseBinaryFormat">false</property>
+                          </properties>
+                        </outputColumn>
+                      </outputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Sequence ParMaster\Data Flow Task\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[Location]"
+                          codePage="1252"
+                          dataType="str"
+                          length="7"
+                          name="Location" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence ParMaster\Data Flow Task\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[LocationName]"
+                          codePage="1252"
+                          dataType="str"
+                          length="255"
+                          name="LocationName" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence ParMaster\Data Flow Task\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[ItemNumber]"
+                          dataType="ui8"
+                          name="ItemNumber" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence ParMaster\Data Flow Task\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[BinSequence]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="BinSequence" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence ParMaster\Data Flow Task\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[StockUOM]"
+                          codePage="1252"
+                          dataType="str"
+                          length="10"
+                          name="StockUOM" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence ParMaster\Data Flow Task\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[BinQuantity(Max Min)]"
+                          codePage="1252"
+                          dataType="str"
+                          length="25"
+                          name="BinQuantity(Max Min)" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence ParMaster\Data Flow Task\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[LeadTime]"
+                          dataType="i4"
+                          name="LeadTime" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence ParMaster\Data Flow Task\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[ItemTypeS StockN NonStock]"
+                          codePage="1252"
+                          dataType="str"
+                          length="10"
+                          name="ItemTypeS StockN NonStock" />
+                      </externalMetadataColumns>
+                    </output>
+                    <output
+                      refId="Package\Sequence ParMaster\Data Flow Task\Flat File Source.Outputs[Flat File Source Error Output]"
+                      isErrorOut="true"
+                      name="Flat File Source Error Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Sequence ParMaster\Data Flow Task\Flat File Source.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]"
+                          codePage="1252"
+                          dataType="text"
+                          description="Flat File Source Error Output Column"
+                          lineageId="Package\Sequence ParMaster\Data Flow Task\Flat File Source.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]"
+                          name="Flat File Source Error Output Column" />
+                        <outputColumn
+                          refId="Package\Sequence ParMaster\Data Flow Task\Flat File Source.Outputs[Flat File Source Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Sequence ParMaster\Data Flow Task\Flat File Source.Outputs[Flat File Source Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Sequence ParMaster\Data Flow Task\Flat File Source.Outputs[Flat File Source Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Sequence ParMaster\Data Flow Task\Flat File Source.Outputs[Flat File Source Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\Sequence ParMaster\Data Flow Task\OLE DB Destination"
+                  componentClassID="Microsoft.OLEDBDestination"
+                  contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+                  description="OLE DB Destination"
+                  name="OLE DB Destination"
+                  usesDispositions="true"
+                  version="4">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">[dbo].[ParMaster]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">3</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepIdentity">false</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepNulls">false</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                      name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                      name="FastLoadMaxInsertCommitSize">2147483647</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Sequence ParMaster\Data Flow Task\OLE DB Destination.Connections[OleDbConnection]"
+                      connectionManagerID="Package.ConnectionManagers[etl.bluebin.com]"
+                      connectionManagerRefId="Package.ConnectionManagers[etl.bluebin.com]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\Sequence ParMaster\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input]"
+                      errorOrTruncationOperation="Insert"
+                      errorRowDisposition="FailComponent"
+                      hasSideEffects="true"
+                      name="OLE DB Destination Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\Sequence ParMaster\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[LocationId]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="7"
+                          cachedName="LocationId"
+                          externalMetadataColumnId="Package\Sequence ParMaster\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[LocationId]"
+                          lineageId="Package\Sequence ParMaster\Data Flow Task\Flat File Source.Outputs[Flat File Source Output].Columns[LocationId]" />
+                        <inputColumn
+                          refId="Package\Sequence ParMaster\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[LocationName]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="255"
+                          cachedName="LocationName"
+                          externalMetadataColumnId="Package\Sequence ParMaster\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[LocationName]"
+                          lineageId="Package\Sequence ParMaster\Data Flow Task\Flat File Source.Outputs[Flat File Source Output].Columns[LocationName]" />
+                        <inputColumn
+                          refId="Package\Sequence ParMaster\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[ItemNumber]"
+                          cachedDataType="i4"
+                          cachedName="ItemNumber"
+                          externalMetadataColumnId="Package\Sequence ParMaster\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ItemNumber]"
+                          lineageId="Package\Sequence ParMaster\Data Flow Task\Flat File Source.Outputs[Flat File Source Output].Columns[ItemNumber]" />
+                        <inputColumn
+                          refId="Package\Sequence ParMaster\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[BinSequence]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="BinSequence"
+                          externalMetadataColumnId="Package\Sequence ParMaster\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[BinSequence]"
+                          lineageId="Package\Sequence ParMaster\Data Flow Task\Flat File Source.Outputs[Flat File Source Output].Columns[BinSequence]" />
+                        <inputColumn
+                          refId="Package\Sequence ParMaster\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[StockUOM]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="10"
+                          cachedName="StockUOM"
+                          externalMetadataColumnId="Package\Sequence ParMaster\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[StockUOM]"
+                          lineageId="Package\Sequence ParMaster\Data Flow Task\Flat File Source.Outputs[Flat File Source Output].Columns[StockUOM]" />
+                        <inputColumn
+                          refId="Package\Sequence ParMaster\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[BinQuantity]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="25"
+                          cachedName="BinQuantity"
+                          externalMetadataColumnId="Package\Sequence ParMaster\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[BinQuantity]"
+                          lineageId="Package\Sequence ParMaster\Data Flow Task\Flat File Source.Outputs[Flat File Source Output].Columns[BinQuantity]" />
+                        <inputColumn
+                          refId="Package\Sequence ParMaster\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[LeadTime]"
+                          cachedDataType="i4"
+                          cachedName="LeadTime"
+                          externalMetadataColumnId="Package\Sequence ParMaster\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[LeadTime]"
+                          lineageId="Package\Sequence ParMaster\Data Flow Task\Flat File Source.Outputs[Flat File Source Output].Columns[LeadTime]" />
+                        <inputColumn
+                          refId="Package\Sequence ParMaster\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[ItemType]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="10"
+                          cachedName="ItemType"
+                          externalMetadataColumnId="Package\Sequence ParMaster\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ItemType]"
+                          lineageId="Package\Sequence ParMaster\Data Flow Task\Flat File Source.Outputs[Flat File Source Output].Columns[ItemType]" />
+                      </inputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Sequence ParMaster\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[LocationId]"
+                          codePage="1252"
+                          dataType="str"
+                          length="7"
+                          name="LocationId" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence ParMaster\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[LocationName]"
+                          codePage="1252"
+                          dataType="str"
+                          length="255"
+                          name="LocationName" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence ParMaster\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ItemNumber]"
+                          dataType="i4"
+                          name="ItemNumber" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence ParMaster\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[BinSequence]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="BinSequence" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence ParMaster\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[StockUOM]"
+                          codePage="1252"
+                          dataType="str"
+                          length="10"
+                          name="StockUOM" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence ParMaster\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[BinQuantity]"
+                          codePage="1252"
+                          dataType="str"
+                          length="25"
+                          name="BinQuantity" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence ParMaster\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[LeadTime]"
+                          dataType="i2"
+                          name="LeadTime" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence ParMaster\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ItemType]"
+                          codePage="1252"
+                          dataType="str"
+                          length="10"
+                          name="ItemType" />
+                      </externalMetadataColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\Sequence ParMaster\Data Flow Task\OLE DB Destination.Outputs[OLE DB Destination Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="OLE DB Destination Error Output"
+                      synchronousInputId="Package\Sequence ParMaster\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Sequence ParMaster\Data Flow Task\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Sequence ParMaster\Data Flow Task\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Sequence ParMaster\Data Flow Task\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Sequence ParMaster\Data Flow Task\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+              </components>
+              <paths>
+                <path
+                  refId="Package\Sequence ParMaster\Data Flow Task.Paths[Flat File Source Output]"
+                  endId="Package\Sequence ParMaster\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input]"
+                  name="Flat File Source Output"
+                  startId="Package\Sequence ParMaster\Data Flow Task\Flat File Source.Outputs[Flat File Source Output]" />
+              </paths>
+            </pipeline>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Sequence ParMaster\truncateparmaster"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{9DA9960E-0EC5-4AA1-8683-1829563F7E93}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="truncateparmaster"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2014; © 2014 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{41D42549-910E-4E30-BD27-AD508B87746F}"
+              SQLTask:SqlStatementSource="truncate table dbo.ParMaster" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+      <DTS:PrecedenceConstraints>
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Sequence ParMaster.PrecedenceConstraints[Constraint]"
+          DTS:CreationName=""
+          DTS:DTSID="{9960776B-F908-482F-A0BD-AEFCAC21DE12}"
+          DTS:From="Package\Sequence ParMaster\Copy ParMaster File"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint"
+          DTS:To="Package\Sequence ParMaster\truncateparmaster" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Sequence ParMaster.PrecedenceConstraints[Constraint 1]"
+          DTS:CreationName=""
+          DTS:DTSID="{6148840E-C02B-4ACA-9C45-4E8ACF05EB9E}"
+          DTS:From="Package\Sequence ParMaster\truncateparmaster"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 1"
+          DTS:To="Package\Sequence ParMaster\Data Flow Task" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Sequence ParMaster.PrecedenceConstraints[Constraint 2]"
+          DTS:CreationName=""
+          DTS:DTSID="{4FCCE8F3-B46D-483A-A18D-900D12D57C84}"
+          DTS:From="Package\Sequence ParMaster\Data Flow Task"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 2"
+          DTS:To="Package\Sequence ParMaster\ArchiveParMaster" />
+      </DTS:PrecedenceConstraints>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="sql12">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="167,42"
+          Id="Package\Sequence ItemMaster\ArchiveItemMaster"
+          TopLeft="142,244" />
+        <NodeLayout
+          Size="151,42"
+          Id="Package\Sequence ItemMaster\Data Flow Task"
+          TopLeft="42,178" />
+        <NodeLayout
+          Size="178,42"
+          Id="Package\Sequence ItemMaster\Truncate ItemMaster"
+          TopLeft="41,80" />
+        <EdgeLayout
+          Id="Package\Sequence ItemMaster.PrecedenceConstraints[Constraint 1]"
+          TopLeft="130,122">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-12.5,56"
+              Start="0,0"
+              End="-12.5,48.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,24" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,24"
+                    Point2="0,28"
+                    Point3="-4,28" />
+                  <mssgle:LineSegment
+                    End="-8.5,28" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-8.5,28"
+                    Point2="-12.5,28"
+                    Point3="-12.5,32" />
+                  <mssgle:LineSegment
+                    End="-12.5,48.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Sequence ItemMaster.PrecedenceConstraints[Constraint 2]"
+          TopLeft="117.5,220">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="108,24"
+              Start="0,0"
+              End="108,16.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,8" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,8"
+                    Point2="0,12"
+                    Point3="4,12" />
+                  <mssgle:LineSegment
+                    End="104,12" />
+                  <mssgle:CubicBezierSegment
+                    Point1="104,12"
+                    Point2="108,12"
+                    Point3="108,16" />
+                  <mssgle:LineSegment
+                    End="108,16.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="179,42"
+          Id="Package\Sequence ItemMaster\Copy ItemMaster File"
+          TopLeft="13,5" />
+        <EdgeLayout
+          Id="Package\Sequence ItemMaster.PrecedenceConstraints[Constraint]"
+          TopLeft="102.5,47">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="27.5,33"
+              Start="0,0"
+              End="27.5,25.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,12.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,12.5"
+                    Point2="0,16.5"
+                    Point3="4,16.5" />
+                  <mssgle:LineSegment
+                    End="23.5,16.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="23.5,16.5"
+                    Point2="27.5,16.5"
+                    Point3="27.5,20.5" />
+                  <mssgle:LineSegment
+                    End="27.5,25.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="314,341"
+          Size="314,384"
+          Id="Package\Sequence ItemMaster"
+          TopLeft="501,302" />
+        <NodeLayout
+          Size="160,42"
+          Id="Package\Sequence ParMaster\ArchiveParMaster"
+          TopLeft="147,254" />
+        <NodeLayout
+          Size="151,42"
+          Id="Package\Sequence ParMaster\Data Flow Task"
+          TopLeft="42,178" />
+        <NodeLayout
+          Size="166,42"
+          Id="Package\Sequence ParMaster\truncateparmaster"
+          TopLeft="41,80" />
+        <EdgeLayout
+          Id="Package\Sequence ParMaster.PrecedenceConstraints[Constraint 1]"
+          TopLeft="120.75,122">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,56"
+              Start="0,0"
+              End="0,48.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,48.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Sequence ParMaster.PrecedenceConstraints[Constraint 2]"
+          TopLeft="117.5,220">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="109.5,34"
+              Start="0,0"
+              End="109.5,26.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,13" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,13"
+                    Point2="0,17"
+                    Point3="4,17" />
+                  <mssgle:LineSegment
+                    End="105.5,17" />
+                  <mssgle:CubicBezierSegment
+                    Point1="105.5,17"
+                    Point2="109.5,17"
+                    Point3="109.5,21" />
+                  <mssgle:LineSegment
+                    End="109.5,26.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="172,42"
+          Id="Package\Sequence ParMaster\Copy ParMaster File"
+          TopLeft="13,5" />
+        <EdgeLayout
+          Id="Package\Sequence ParMaster.PrecedenceConstraints[Constraint]"
+          TopLeft="99,47">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="25,33"
+              Start="0,0"
+              End="25,25.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,12.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,12.5"
+                    Point2="0,16.5"
+                    Point3="4,16.5" />
+                  <mssgle:LineSegment
+                    End="21,16.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="21,16.5"
+                    Point2="25,16.5"
+                    Point3="25,20.5" />
+                  <mssgle:LineSegment
+                    End="25,25.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="344,351"
+          Size="344,394"
+          Id="Package\Sequence ParMaster"
+          TopLeft="137,299" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Sequence ItemMaster\Data Flow Task">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="171,42"
+          Id="Package\Sequence ItemMaster\Data Flow Task\OLE DB Destination"
+          TopLeft="141,162" />
+        <NodeLayout
+          Size="151,42"
+          Id="Package\Sequence ItemMaster\Data Flow Task\Flat File Source"
+          TopLeft="60,60" />
+        <EdgeLayout
+          Id="Package\Sequence ItemMaster\Data Flow Task.Paths[Flat File Source Output]"
+          TopLeft="135.5,102">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="91,60"
+              Start="0,0"
+              End="91,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,26" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,26"
+                    Point2="0,30"
+                    Point3="4,30" />
+                  <mssgle:LineSegment
+                    End="87,30" />
+                  <mssgle:CubicBezierSegment
+                    Point1="87,30"
+                    Point2="91,30"
+                    Point3="91,34" />
+                  <mssgle:LineSegment
+                    End="91,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Sequence ItemMaster\Data Flow Task\OLE DB Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\Sequence ParMaster\Data Flow Task">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="151,42"
+          Id="Package\Sequence ParMaster\Data Flow Task\Flat File Source"
+          TopLeft="178,78" />
+        <NodeLayout
+          Size="171,42"
+          Id="Package\Sequence ParMaster\Data Flow Task\OLE DB Destination"
+          TopLeft="259,180" />
+        <EdgeLayout
+          Id="Package\Sequence ParMaster\Data Flow Task.Paths[Flat File Source Output]"
+          TopLeft="253.5,120">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="91,60"
+              Start="0,0"
+              End="91,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,26" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,26"
+                    Point2="0,30"
+                    Point3="4,30" />
+                  <mssgle:LineSegment
+                    End="87,30" />
+                  <mssgle:CubicBezierSegment
+                    Point1="87,30"
+                    Point2="91,30"
+                    Point3="91,34" />
+                  <mssgle:LineSegment
+                    End="91,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Sequence ParMaster\Data Flow Task\OLE DB Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

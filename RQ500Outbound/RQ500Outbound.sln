@@ -1,0 +1,21 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.21005.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{159641D6-6404-4A2A-AE62-294DE0FE8301}") = "RQ500OutboundFile", "RQ500Outbound\RQ500OutboundFile.dtproj", "{56004CB4-DBC5-4D8D-81C5-EE804C5CF4DF}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Development|Default = Development|Default
+		Prod|Default = Prod|Default
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{56004CB4-DBC5-4D8D-81C5-EE804C5CF4DF}.Development|Default.ActiveCfg = Development
+		{56004CB4-DBC5-4D8D-81C5-EE804C5CF4DF}.Development|Default.Build.0 = Development
+		{56004CB4-DBC5-4D8D-81C5-EE804C5CF4DF}.Prod|Default.ActiveCfg = Prod
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
